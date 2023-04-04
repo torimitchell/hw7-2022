@@ -3,14 +3,14 @@
 // SETUP ZONE
 // **********
 // **********
-var video = document.getElementById("player1");
-video.load();
-
-video.autoplay = false;
-video.loop = false;
+var video;
 
 window.addEventListener("load", function() {
 	console.log("Good job opening the window");
+	video = document.querySelector("#player1");
+	video.load();
+	video.autoplay = false;
+	video.loop = false;
 });
 
 // **********
@@ -20,10 +20,8 @@ window.addEventListener("load", function() {
 // **********
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
-});
-function playvideo() {
 	video.play();
-}
+});
 
 // **********
 // **********
@@ -32,10 +30,8 @@ function playvideo() {
 // **********
 document.querySelector("#pause").addEventListener("click", function() {
 	console.log("Pause Video");
-});
-function pausevideo() {
 	video.pause();
-}
+});
 
 // **********
 // **********
@@ -44,6 +40,7 @@ function pausevideo() {
 // **********
 document.querySelector("#slower").addEventListener("click", function() {
 	console.log("Slow Down");
+	video.playbackRate = video.playbackRate * 0.9
 });
 
 
@@ -55,6 +52,7 @@ document.querySelector("#slower").addEventListener("click", function() {
 // **********
 document.querySelector("#faster").addEventListener("click", function() {
 	console.log("Speed Up");
+	video.playbackRate = video.playbackRate * 1.1
 });
 
 
@@ -65,6 +63,7 @@ document.querySelector("#faster").addEventListener("click", function() {
 // **********
 document.querySelector("#skip").addEventListener("click", function() {
 	console.log("Skip Ahead");
+
 });
 
 
@@ -75,8 +74,7 @@ document.querySelector("#skip").addEventListener("click", function() {
 // **********
 document.querySelector("#mute").addEventListener("click", function() {
 	console.log("Mute button");
-});
-var muteTog = document.getElementById("mute");
+	var muteTog = document.getElementById("mute");
 	if (video.muted) {
 		video.muted = false; // if the video is currently muted and they hit the toggle button, unmute the video
 		muteTog.innerHTML = "Mute";
@@ -84,6 +82,7 @@ var muteTog = document.getElementById("mute");
 		video.muted = true;
 		muteTog.innerHTML = "Unmute";
 	}
+});
 
 // **********
 // **********
@@ -92,6 +91,7 @@ var muteTog = document.getElementById("mute");
 // **********
 document.querySelector("#slider").addEventListener("click", function() {
 	console.log("I'm the slider");
+
 });
 
 
@@ -102,9 +102,9 @@ document.querySelector("#slider").addEventListener("click", function() {
 // **********
 document.querySelector("#vintage").addEventListener("click", function() {
 	console.log("Old School button");
+	video = document.querySelector("figure");
+	video.classList.add("oldSchool");
 });
-video = document.querySelector("figure");
-video.classList.add("oldSchool");
 
 // **********
 // **********
@@ -113,7 +113,7 @@ video.classList.add("oldSchool");
 // **********
 document.querySelector("#orig").addEventListener("click", function() {
 	console.log("Original button");
+	video = document.querySelector("figure");
+	video.classList.remove("oldSchool");
 });
-video = document.querySelector("figure");
-video.classList.remove("oldSchool");
 
