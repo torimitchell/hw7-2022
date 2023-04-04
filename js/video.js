@@ -63,7 +63,12 @@ document.querySelector("#faster").addEventListener("click", function() {
 // **********
 document.querySelector("#skip").addEventListener("click", function() {
 	console.log("Skip Ahead");
-
+	console.log("Current time in video is", video.currentTime);
+	if ((video.currentTime) <= (video.duration - 10)) {
+		video.currentTime += 10;
+	} else {
+		video.currentTime = 0;
+	} console.log("New video timestamp is", video.currentTime);
 });
 
 
@@ -89,9 +94,18 @@ document.querySelector("#mute").addEventListener("click", function() {
 // VOL SLIDER
 // **********
 // **********
-document.querySelector("#slider").addEventListener("click", function() {
+document.querySelector("#slider").addEventListener("change", function() {
 	console.log("I'm the slider");
+	console.log(this.value)
+	document.querySelector("#slider").innerHTML = this.value
 
+	// From class:
+	// document.querySelector("#slider").addEventListener("change", function() {
+	// 	console.log("I am in slider")
+	// 	console.log(this)
+	// 	console.log(this.value)
+	// 	bd = document.querySelector("body")
+	// 	bd.style.fontSize = this.value+"px"
 });
 
 
